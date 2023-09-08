@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 
 def get_config():
     return {
@@ -11,13 +12,17 @@ def get_config():
         "lang_tgt": "fr", #s16
         "model_folder": "weights",
         "model_basename": "tmodel_",
-        "preload": False,   #s16
+        "preload": 14,   #s16
         "tokenizer_file": "tokenizer_{0}.json",
-        "experiment_name": "runs/tmodel"
+        "experiment_name": "runs/tmodel_2"
     }
 
 def get_weights_file_path(config, epoch:str):
     model_folder = config["model_folder"]
     model_basename = config["model_basename"]
     model_filename = f"{model_basename}{epoch}.pt"
-    return str(Path('.')/model_folder/model_filename)
+    #return str(Path('.')/model_folder/model_filename)
+    model_path = str(Path('.')/model_folder/model_filename)
+    pwd = os.getcwd()
+    return str(pwd) +'/' + str(model_path)
+    # return str(Path('/content/ERA1_S16_transformers_speedup/pytorch_src/')/model_folder/model_filename)
