@@ -327,6 +327,8 @@ def train_model(config):
         'global_step': global_step
     }, model_filename)
 
+    print(f'Model saved to {model_filename}')
+
 def get_lr(optimizer):
     for param_group in optimizer.param_groups:
         return param_group['lr']
