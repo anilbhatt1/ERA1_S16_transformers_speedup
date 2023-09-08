@@ -163,8 +163,8 @@ def get_ds(config):
     #s16
     filtered_sorted_ds = [k for k in sorted_ds if len(tokenizer_src.encode(k['translation'][config['lang_src']]).ids) < 150] 
     filtered_sorted_ds = [k for k in filtered_sorted_ds if (len(k['translation'][config['lang_src']]) + 10) > len(k['translation'][config['lang_tgt']])] 
-    filtered_sorted_ds = [k for k in filtered_sorted_ds if len(k['translation'][config['lang_src']]) > 40]
-    filtered_sorted_ds = [k for k in filtered_sorted_ds if len(k['translation'][config['lang_tgt']]) > 40]
+    filtered_sorted_ds = [k for k in filtered_sorted_ds if len(k['translation'][config['lang_src']]) > 20]
+    filtered_sorted_ds = [k for k in filtered_sorted_ds if len(k['translation'][config['lang_tgt']]) > 20]
 
     #Keep 90% for training, 10% for validation
     train_ds_size = int(len(filtered_sorted_ds) * 0.9)
