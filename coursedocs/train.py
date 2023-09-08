@@ -148,7 +148,15 @@ def get_ds(config):
     val_ds_size = len(ds_raw) - train_ds_size
     train_ds_raw, val_ds_raw = random_split(ds_raw, [train_ds_size, val_ds_size])
 
-    train_ds = BilingualDataset(train_ds_raw, tokenizer_src, tokenizer_tgt, config['lang_src'], config['lang_tgt'], config['seq_len'])
+    #s16
+    sorted_train_ds = sorted(train_ds_raw, key=lambda x: len(x['translation'][config['lang_src']]))
+    #s16
+    filtered_sorted_train_ds = [k for k in sorted_train_ds if len(k['translation'][config['lang_src']]) < 120]  
+    filtered_sorted_train_ds = [k for k in sorted_train_ds if len(k['translation'][config['lang_tgt']]) < 120]      
+    filtered_sorted_train_ds = [k for k in sorted_train_ds if len(k['translation'][config['lang_src']]) + 10 > len(k['translation'][config['lang_tgt']])]
+
+    #s16
+    train_ds = BilingualDataset(filtered_sorted_train_ds, tokenizer_src, tokenizer_tgt, config['lang_src'], config['lang_tgt'], config['seq_len'])
     val_ds = BilingualDataset(val_ds_raw, tokenizer_src, tokenizer_tgt, config['lang_src'], config['lang_tgt'], config['seq_len'])
 
     #Find the max length of each sentence in source & target sentence

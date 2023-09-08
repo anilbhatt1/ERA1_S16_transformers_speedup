@@ -1,0 +1,5 @@
+transformers
+datasets
+lightning
+watermark
+rich
