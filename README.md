@@ -84,7 +84,12 @@ Processing epoch  21: 100%|██████████| 1147/1147 [03:41<00:0
 
 ```
 - Colab Notebook reference : ERAV1_S16_Transformers_speedup_V2.ipynb
+- Tensorboard logs:
+	- Tensorboard train_loss for epochs 1-15   -> https://tensorboard.dev/experiment/yFyyN5a9SKqrqM1ek29YsQ/
+	- Tensorboard train_loss for epochs 16-22  -> https://tensorboard.dev/experiment/zjyzUgokSGOv635LMU43Xw/
 - Gdrive location for tensorboard runs: 
     - https://drive.google.com/drive/folders/1--0N21kIMTIUAPZkKTl1WLilwaoDxqBL
     - Epochs 1 - 15 : tmodel
     - Epochs 16 -22 : tmodel_2
+    
+ 
